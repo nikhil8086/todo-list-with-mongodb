@@ -6,14 +6,23 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+// MongoDB credentials (easy to understand)
+const DB_USERNAME = "nikhilchaube08_db_user";
+const DB_PASSWORD = "@LA@q53nHHu%*53"; // raw password (with special chars)
+const DB_NAME = "mydatabase";
+
+const encodedPassword = encodeURIComponent(DB_PASSWORD);
+const MONGODB_URI = `mongodb+srv://${DB_USERNAME}:${encodedPassword}@cluster0.ruzol6z.mongodb.net/${DB_NAME}`;
+
 // MongoDB Connection
-mongoose.connect("mongodb+srv://nikhilchaube08_db_user:@LA@q53nHHu%*53@cluster0.mongodb.net/mydatabase")
+mongoose
+  .connect(MONGODB_URI)
   .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // Todo Schema
 const TodoSchema = new mongoose.Schema({
-  task: String
+  task: String,
 });
 
 const Todo = mongoose.model("Todo", TodoSchema);
@@ -41,6 +50,3 @@ app.delete("/todos/:id", async (req, res) => {
 app.listen(3000, () => {
   console.log("Server running at http://localhost:3000");
 });
-
-
-
