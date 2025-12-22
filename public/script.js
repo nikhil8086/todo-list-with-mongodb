@@ -1,5 +1,3 @@
-
-
 const list = document.getElementById("todoList");
 const input = document.getElementById("taskInput");
 
