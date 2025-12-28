@@ -27,6 +27,4 @@ Built using **Node.js, Express, MongoDB, JavaScript, HTML, CSS**, and deployed l
 
 **Database**
 - MongoDB (MongoDB Atlas)
-
-**Database**
-- MongoDB (MongoDB Atlas)
+  
